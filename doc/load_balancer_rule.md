@@ -1,11 +1,11 @@
-# cloudca_load_balancer_rule
+# frontier_load_balancer_rule
 
 Manage load balancer rules. Modifying the ports or public IP will cause the rule to be recreated
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_load_balancer_rule" "lbr" {
+resource "frontier_load_balancer_rule" "lbr" {
     environment_id    = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     name              = "web_lb"
     network_id        = "7bb97867-8021-443b-b548-c15897e3816d"
@@ -47,5 +47,5 @@ In addition to the arguments listed above, the following computed attributes are
 Load balancer rules can be imported using the load balancer rule id, e.g.
 
 ```bash
-terraform import cloudca_load_balancer_rule.lbr e798936b-b05d-4dbf-ade1-21f98c5fd0f0
+terraform import frontier_load_balancer_rule.lbr e798936b-b05d-4dbf-ade1-21f98c5fd0f0
 ```

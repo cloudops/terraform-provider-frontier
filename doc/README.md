@@ -15,7 +15,7 @@ provider "cloudca" {
 }
 
 # Create an Instance
-resource "cloudca_instance" "instance" {
+resource "frontier_instance" "instance" {
     # ...
 }
 ```
@@ -24,20 +24,20 @@ resource "cloudca_instance" "instance" {
 
 The following arguments are supported:
 
-- [api_key](#api_key) - (Required) This is the cloud.ca API key. It can also be sourced from the `CLOUDCA_API_KEY` environment variable.
-- [api_url](#api_url) - (Optional) This is the cloud.ca API URL. It can also be sourced from the `CLOUDCA_API_URL` environment variable.
+- [api_key](#api_key) - (Required) This is the cloud.ca API key. It can also be sourced from the `frontier_API_KEY` environment variable.
+- [api_url](#api_url) - (Optional) This is the cloud.ca API URL. It can also be sourced from the `frontier_API_URL` environment variable.
 
 ## Resources
 
-- [**cloudca_environment**](environment.md)
-- [**cloudca_instance**](instance.md)
-- [**cloudca_load_balancer_rule**](load_balancer_rule.md)
-- [**cloudca_network**](network.md)
-- [**cloudca_network_acl**](network_acl.md)
-- [**cloudca_network_acl_rule**](network_acl_rule.md)
-- [**cloudca_port_forwarding_rule**](port_forwarding_rule.md)
-- [**cloudca_public_ip**](public_ip.md)
-- [**cloudca_static_nat**](static_nat.md)
-- [**cloudca_ssh_key**](ssh_key.md)
-- [**cloudca_volume**](volume.md)
-- [**cloudca_vpc**](vpc.md)
+- [**frontier_environment**](environment.md)
+- [**frontier_instance**](instance.md)
+- [**frontier_load_balancer_rule**](load_balancer_rule.md)
+- [**frontier_network**](network.md)
+- [**frontier_network_acl**](network_acl.md)
+- [**frontier_network_acl_rule**](network_acl_rule.md)
+- [**frontier_port_forwarding_rule**](port_forwarding_rule.md)
+- [**frontier_public_ip**](public_ip.md)
+- [**frontier_static_nat**](static_nat.md)
+- [**frontier_ssh_key**](ssh_key.md)
+- [**frontier_volume**](volume.md)
+- [**frontier_vpc**](vpc.md)

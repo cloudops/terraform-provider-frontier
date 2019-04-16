@@ -1,4 +1,4 @@
-# cloudca_volume
+# frontier_volume
 
 Manages volumes. Modifying all fields with the exception of instance_id will result in destruction and recreation of the volume.
 
@@ -9,7 +9,7 @@ If the instance_id is updated, the volume will be detached from the previous ins
 ## Example Usage
 
 ```hcl
-resource "cloudca_volume" "data_volume" {
+resource "frontier_volume" "data_volume" {
     environment_id = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     name           = "Data Volume"
     disk_offering  = "20GB - 20 IOPS Min."
@@ -39,5 +39,5 @@ In addition to the arguments listed above, the following computed attributes are
 Volumes can be imported using the volume id, e.g.
 
 ```bash
-terraform import cloudca_volume.data_volume b24f94f7-098f-458b-aeb3-b38992ae8d67
+terraform import frontier_volume.data_volume b24f94f7-098f-458b-aeb3-b38992ae8d67
 ```

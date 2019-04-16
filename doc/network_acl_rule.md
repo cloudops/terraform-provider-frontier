@@ -1,11 +1,11 @@
-# cloudca_network_acl_rule
+# frontier_network_acl_rule
 
 Create a network ACL rule.
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_network_acl_rule" "my_acl" {
+resource "frontier_network_acl_rule" "my_acl" {
     environment_id = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     rule_number    = 55
     cidr           = "10.212.208.0/22"
@@ -46,5 +46,5 @@ In addition to the arguments listed above, the following computed attributes are
 Network ACL rules can be imported using the network ACL rule id, e.g.
 
 ```bash
-terraform import cloudca_network_acl_rule.my_acl 24323470-336e-4244-be26-5b25a262bcce
+terraform import frontier_network_acl_rule.my_acl 24323470-336e-4244-be26-5b25a262bcce
 ```

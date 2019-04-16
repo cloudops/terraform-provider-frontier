@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -8,11 +8,11 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaStaticNAT() *schema.Resource {
+func resourceFrontierStaticNAT() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaStaticNATCreate,
-		Read:   resourceCloudcaStaticNATRead,
-		Delete: resourceCloudcaStaticNATDelete,
+		Create: resourceFrontierStaticNATCreate,
+		Read:   resourceFrontierStaticNATRead,
+		Delete: resourceFrontierStaticNATDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -41,7 +41,7 @@ func resourceCloudcaStaticNAT() *schema.Resource {
 	}
 }
 
-func resourceCloudcaStaticNATCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierStaticNATCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -56,10 +56,10 @@ func resourceCloudcaStaticNATCreate(d *schema.ResourceData, meta interface{}) er
 		return fmt.Errorf("Error enabling static NAT: %s", err)
 	}
 	d.SetId(staticNATPublicIP.Id)
-	return resourceCloudcaStaticNATRead(d, meta)
+	return resourceFrontierStaticNATRead(d, meta)
 }
 
-func resourceCloudcaStaticNATRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierStaticNATRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -81,7 +81,7 @@ func resourceCloudcaStaticNATRead(d *schema.ResourceData, meta interface{}) erro
 	return nil
 }
 
-func resourceCloudcaStaticNATDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierStaticNATDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

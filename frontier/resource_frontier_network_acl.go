@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -8,11 +8,11 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaNetworkACL() *schema.Resource {
+func resourceFrontierNetworkACL() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaNetworkACLCreate,
-		Read:   resourceCloudcaNetworkACLRead,
-		Delete: resourceCloudcaNetworkACLDelete,
+		Create: resourceFrontierNetworkACLCreate,
+		Read:   resourceFrontierNetworkACLRead,
+		Delete: resourceFrontierNetworkACLDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -47,7 +47,7 @@ func resourceCloudcaNetworkACL() *schema.Resource {
 	}
 }
 
-func resourceCloudcaNetworkACLCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -64,10 +64,10 @@ func resourceCloudcaNetworkACLCreate(d *schema.ResourceData, meta interface{}) e
 		return fmt.Errorf("Error creating the new network ACL %s: %s", aclToCreate.Name, err)
 	}
 	d.SetId(newACL.Id)
-	return resourceCloudcaNetworkACLRead(d, meta)
+	return resourceFrontierNetworkACLRead(d, meta)
 }
 
-func resourceCloudcaNetworkACLRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -94,7 +94,7 @@ func resourceCloudcaNetworkACLRead(d *schema.ResourceData, meta interface{}) err
 	return nil
 }
 
-func resourceCloudcaNetworkACLDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

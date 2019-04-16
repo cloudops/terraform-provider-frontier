@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -13,20 +13,20 @@ import (
 )
 
 // GetCloudCAResourceMap resutrn the available Resource map
-func GetCloudCAResourceMap() map[string]*schema.Resource {
+func GetFrontierResourceMap() map[string]*schema.Resource {
 	return map[string]*schema.Resource{
-		"cloudca_instance":             resourceCloudcaInstance(),
-		"cloudca_environment":          resourceCloudcaEnvironment(),
-		"cloudca_vpc":                  resourceCloudcaVpc(),
-		"cloudca_network":              resourceCloudcaNetwork(),
-		"cloudca_port_forwarding_rule": resourceCloudcaPortForwardingRule(),
-		"cloudca_public_ip":            resourceCloudcaPublicIP(),
-		"cloudca_volume":               resourceCloudcaVolume(),
-		"cloudca_load_balancer_rule":   resourceCloudcaLoadBalancerRule(),
-		"cloudca_network_acl":          resourceCloudcaNetworkACL(),
-		"cloudca_network_acl_rule":     resourceCloudcaNetworkACLRule(),
-		"cloudca_static_nat":           resourceCloudcaStaticNAT(),
-		"cloudca_ssh_key":              resourceCloudcaSSHKey(),
+		"frontier_instance":             resourceFrontierInstance(),
+		"frontier_environment":          resourceFrontierEnvironment(),
+		"frontier_vpc":                  resourceFrontierVpc(),
+		"frontier_network":              resourceFrontierNetwork(),
+		"frontier_port_forwarding_rule": resourceFrontierPortForwardingRule(),
+		"frontier_public_ip":            resourceFrontierPublicIP(),
+		"frontier_volume":               resourceFrontierVolume(),
+		"frontier_load_balancer_rule":   resourceFrontierLoadBalancerRule(),
+		"frontier_network_acl":          resourceFrontierNetworkACL(),
+		"frontier_network_acl_rule":     resourceFrontierNetworkACLRule(),
+		"frontier_static_nat":           resourceFrontierStaticNAT(),
+		"frontier_ssh_key":              resourceFrontierSSHKey(),
 	}
 }
 

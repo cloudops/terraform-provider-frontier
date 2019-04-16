@@ -1,11 +1,11 @@
-# cloudca_network_acl
+# frontier_network_acl
 
 Create a network ACL.
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_network_acl" "my_acl" {
+resource "frontier_network_acl" "my_acl" {
     environment_id = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     name           = "test-acl"
     description    = "This is a test acl"
@@ -34,5 +34,5 @@ In addition to the arguments listed above, the following computed attributes are
 Network ACLs can be imported using network ACL id, e.g.
 
 ```bash
-terraform import cloudca_network_acl.my_acl fe20c7bd-9aa2-4cdd-aa73-e13e49158a6e
+terraform import frontier_network_acl.my_acl fe20c7bd-9aa2-4cdd-aa73-e13e49158a6e
 ```

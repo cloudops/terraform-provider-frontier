@@ -1,11 +1,11 @@
-# cloudca_instance
+# frontier_instance
 
 Create and starts an instance.
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_instance" "my_instance" {
+resource "frontier_instance" "my_instance" {
     environment_id         = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     name                   = "test-instance"
     network_id             = "672016ef-05ee-4e88-b68f-ac9cc462300b"
@@ -51,5 +51,5 @@ In addition to the arguments listed above, the following computed attributes are
 Instances can be imported using the instance id, e.g.
 
 ```bash
-terraform import cloudca_instance.my_instance c33dc4e3-0067-4c26-a588-53c9a936b9de
+terraform import frontier_instance.my_instance c33dc4e3-0067-4c26-a588-53c9a936b9de
 ```

@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -17,12 +17,12 @@ const (
 	ICMP = "ICMP"
 )
 
-func resourceCloudcaNetworkACLRule() *schema.Resource {
+func resourceFrontierNetworkACLRule() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaNetworkACLRuleCreate,
-		Update: resourceCloudcaNetworkACLRuleUpdate,
-		Read:   resourceCloudcaNetworkACLRuleRead,
-		Delete: resourceCloudcaNetworkACLRuleDelete,
+		Create: resourceFrontierNetworkACLRuleCreate,
+		Update: resourceFrontierNetworkACLRuleUpdate,
+		Read:   resourceFrontierNetworkACLRuleRead,
+		Delete: resourceFrontierNetworkACLRuleDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -100,7 +100,7 @@ func resourceCloudcaNetworkACLRule() *schema.Resource {
 	}
 }
 
-func resourceCloudcaNetworkACLRuleCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLRuleCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -128,10 +128,10 @@ func resourceCloudcaNetworkACLRuleCreate(d *schema.ResourceData, meta interface{
 		return fmt.Errorf("Error creating the new network ACL rule %s: %s", aclRuleToCreate.RuleNumber, err)
 	}
 	d.SetId(newACLRule.Id)
-	return resourceCloudcaNetworkACLRuleRead(d, meta)
+	return resourceFrontierNetworkACLRuleRead(d, meta)
 }
 
-func resourceCloudcaNetworkACLRuleUpdate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLRuleUpdate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -155,7 +155,7 @@ func resourceCloudcaNetworkACLRuleUpdate(d *schema.ResourceData, meta interface{
 	return nil
 }
 
-func resourceCloudcaNetworkACLRuleRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLRuleRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -205,7 +205,7 @@ func resourceCloudcaNetworkACLRuleRead(d *schema.ResourceData, meta interface{})
 	return nil
 }
 
-func resourceCloudcaNetworkACLRuleDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkACLRuleDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

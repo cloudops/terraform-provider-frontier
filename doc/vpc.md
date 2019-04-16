@@ -1,11 +1,11 @@
-# cloudca_vpc
+# frontier_vpc
 
 Create a vpc.
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_vpc" "my_vpc" {
+resource "frontier_vpc" "my_vpc" {
     environment_id = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     name           = "test-vpc"
     description    = "This is a test vpc"
@@ -35,5 +35,5 @@ In addition to the arguments listed above, the following computed attributes are
 VPCs can be imported using the VPC id, e.g.
 
 ```bash
-terraform import cloudca_vpc.my_vpc 06dca131-8c68-4054-bd6b-9e47c5a099ea
+terraform import frontier_vpc.my_vpc 06dca131-8c68-4054-bd6b-9e47c5a099ea
 ```

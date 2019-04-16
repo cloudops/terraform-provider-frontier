@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"errors"
@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaLoadBalancerRule() *schema.Resource {
+func resourceFrontierLoadBalancerRule() *schema.Resource {
 	return &schema.Resource{
 		Create: createLbr,
 		Read:   readLbr,

@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaPortForwardingRule() *schema.Resource {
+func resourceFrontierPortForwardingRule() *schema.Resource {
 	return &schema.Resource{
 		Create: createPortForwardingRule,
 		Read:   readPortForwardingRule,

@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaSSHKey() *schema.Resource {
+func resourceFrontierSSHKey() *schema.Resource {
 	return &schema.Resource{
 		Create: createSSHKey,
 		Read:   readSSHKey,
