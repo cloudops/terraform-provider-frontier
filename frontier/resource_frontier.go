@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"regexp"
-	"strconv"
 
 	"github.com/cloud-ca/go-cloudca"
 	"github.com/cloud-ca/go-cloudca/api"
@@ -12,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-// GetCloudCAResourceMap resutrn the available Resource map
+// GetCloudCAResourceMap return the available Resource map
 func GetFrontierResourceMap() map[string]*schema.Resource {
 	return map[string]*schema.Resource{
 		"frontier_instance":             resourceFrontierInstance(),
@@ -27,6 +26,8 @@ func GetFrontierResourceMap() map[string]*schema.Resource {
 		"frontier_network_acl_rule":     resourceFrontierNetworkACLRule(),
 		"frontier_static_nat":           resourceFrontierStaticNAT(),
 		"frontier_ssh_key":              resourceFrontierSSHKey(),
+                "frontier_vpn":                  resourceFrontierVpn(),
+		"frontier_vpn_user":             resourceFrontierVpnUser(),
 	}
 }
 
@@ -40,14 +41,6 @@ func setValueOrID(d *schema.ResourceData, key string, value string, id string) e
 func isID(id string) bool {
 	re := regexp.MustCompile(`^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$`)
 	return re.MatchString(id)
-}
-
-func readIntFromString(valStr string) int {
-	var valInt int
-	if valStr != "" {
-		valInt, _ = strconv.Atoi(valStr)
-	}
-	return valInt
 }
 
 // Provides a common, simple way to deal with 404s.
