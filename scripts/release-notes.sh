@@ -2,7 +2,7 @@
 
 VERSION="$(git describe --tags)"
 function getUrl() {
-    echo $(cat ./dist/terraform-provider-cloudca_${VERSION}_SWIFTURLS | grep $1)
+    echo $(cat ./dist/terraform-provider-frontier_${VERSION}_SWIFTURLS | grep $1)
 }
 
 echo "[DESCRIPTION HERE]

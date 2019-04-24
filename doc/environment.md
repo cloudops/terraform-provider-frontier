@@ -1,6 +1,6 @@
 # frontier_environment
 
-Manages a cloud.ca environment
+Manages a Frontier Cloud environment
 
 ## Example Usage
 
@@ -20,7 +20,7 @@ resource "frontier_environment" "my_environment" {
 The following arguments are supported:
 
 - [service_code](#service_code) - (Required) Service code
-- [organization_code](#organization_code) - (Required) Organization's entry point, i.e. \<entry_point\>.cloud.ca
+- [organization_code](#organization_code) - (Required) Organization's entry point, i.e. \<entry_point\>.frontier.cloudops.net
 - [name](#name) - (Required) Name of environment to be created. Must be lower case, contain alphanumeric characters, underscores or dashes
 - [description](#description) - (Required) Description for the environment
 - [admin_role](#admin_role) - (Optional) List of users that will be given the Environment Admin role

@@ -16,7 +16,7 @@ func Provider() terraform.ResourceProvider {
 			"api_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("FRONTIER_API_URL", "api.frontier.cloudops.net/v1"),
+				DefaultFunc: schema.EnvDefaultFunc("FRONTIER_API_URL", "https://api.frontier.cloudops.net/v1"),
 			},
 			"api_key": {
 				Type:        schema.TypeString,

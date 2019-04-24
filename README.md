@@ -1,15 +1,15 @@
-# terraform-provider-cloudca
+# terraform-provider-frontier
 
-[![Build Status](https://circleci.com/gh/cloud-ca/terraform-provider-cloudca.svg?style=svg)](https://circleci.com/gh/cloud-ca/terraform-provider-cloudca)
-[![license](https://img.shields.io/github/license/cloud-ca/terraform-provider-cloudca.svg)](https://github.com/cloud-ca/terraform-provider-cloudca/blob/master/LICENSE)
+[![Build Status](https://circleci.com/gh/cloudops/terraform-provider-frontier.svg?style=svg)](https://circleci.com/gh/cloudops/terraform-provider-frontier)
+[![license](https://img.shields.io/github/license/cloudops/terraform-provider-frontier.svg)](https://github.com/cloudops/terraform-provider-frontier/blob/master/LICENSE)
 
-Terraform provider for cloud.ca
+Terraform provider for Frontier Cloud
 
 Tested with Terraform version : 0.11.5
 
 ## Installation
 
-1. Download the cloud.ca Terraform provider binary for your OS from the [releases page](https://github.com/cloud-ca/terraform-provider-cloudca/releases).
+1. Download the Frontier Terraform provider binary for your OS from the [releases page](https://github.com/cloudops/terraform-provider-frontier/releases).
 2. Copy the provider to the plugin directory `~/.terraform.d/plugins`.
 
 Alternate installation: [Terraform documentation](https://www.terraform.io/docs/plugins/basics.html)
@@ -21,14 +21,14 @@ In your configuration file, define a variable that will hold your API key. This 
 ```hcl
 variable "my_api_key" {}
 
-provider "cloudca" {
+provider "frontier" {
     api_key = "${var.my_api_key}"
 }
 ```
 
 ## Links
 
-- [**Resources documentation**](https://github.com/cloud-ca/terraform-provider-cloudca/tree/master/doc)
+- [**Resources documentation**](https://github.com/cloudops/terraform-provider-frontier/tree/master/doc)
 
 ## Build from source
 
@@ -37,20 +37,20 @@ Install [Go](https://golang.org/doc/install) (version 1.11 is required)
 Download the provider source:
 
 ```Shell
-go get github.com/cloud-ca/terraform-provider-cloudca
+go get github.com/cloudops/terraform-provider-frontier
 ```
 
 Compile the provider:
 
 ```Shell
-cd $GOPATH/src/github.com/cloud-ca/terraform-provider-cloudca
+cd $GOPATH/src/github.com/cloudops/terraform-provider-frontier
 make build
 ```
 
 Copy the provider to the directory where terraform is located:
 
 ```Shell
-sudo cp ./bin/$(go env GOOS)-$(go env GOARCH)/terraform-provider-cloudca_* $(dirname `which terraform`)
+sudo cp ./bin/$(go env GOOS)-$(go env GOARCH)/terraform-provider-frontier_* $(dirname `which terraform`)
 ```
 
 ## Build for all OS/architectures

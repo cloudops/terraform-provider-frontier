@@ -26,7 +26,7 @@ func GetFrontierResourceMap() map[string]*schema.Resource {
 		"frontier_network_acl_rule":     resourceFrontierNetworkACLRule(),
 		"frontier_static_nat":           resourceFrontierStaticNAT(),
 		"frontier_ssh_key":              resourceFrontierSSHKey(),
-                "frontier_vpn":                  resourceFrontierVpn(),
+		"frontier_vpn":                  resourceFrontierVpn(),
 		"frontier_vpn_user":             resourceFrontierVpnUser(),
 	}
 }

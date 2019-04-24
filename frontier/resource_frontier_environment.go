@@ -43,7 +43,7 @@ func resourceFrontierEnvironment() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Organization's entry point, i.e. <entry_point>.cloud.ca",
+				Description: "Organization's entry point, i.e. <entry_point>.frontier.cloudops.net",
 				StateFunc: func(val interface{}) string {
 					return strings.ToLower(val.(string))
 				},
@@ -52,7 +52,7 @@ func resourceFrontierEnvironment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "A cloudca service code",
+				Description: "A Frontier Cloud service code",
 			},
 			Name: {
 				Type:        schema.TypeString,
