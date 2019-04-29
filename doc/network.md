@@ -1,11 +1,11 @@
-# cloudca_network
+# frontier_network
 
 Create a network.
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_network" "my_network" {
+resource "frontier_network" "my_network" {
     environment_id   = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     name             = "test-network"
     description      = "This is a test network"
@@ -38,5 +38,5 @@ In addition to the arguments listed above, the following computed attributes are
 Networks can be imported using the network id, e.g.
 
 ```bash
-terraform import cloudca_network.my_network eb662105-faa6-4e36-9a90-af1e14f0e3d2
+terraform import frontier_network.my_network eb662105-faa6-4e36-9a90-af1e14f0e3d2
 ```

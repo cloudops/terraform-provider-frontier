@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -11,12 +11,12 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaVpc() *schema.Resource {
+func resourceFrontierVpc() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaVpcCreate,
-		Read:   resourceCloudcaVpcRead,
-		Update: resourceCloudcaVpcUpdate,
-		Delete: resourceCloudcaVpcDelete,
+		Create: resourceFrontierVpcCreate,
+		Read:   resourceFrontierVpcRead,
+		Update: resourceFrontierVpcUpdate,
+		Delete: resourceFrontierVpcDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -66,7 +66,7 @@ func resourceCloudcaVpc() *schema.Resource {
 	}
 }
 
-func resourceCloudcaVpcCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVpcCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -106,10 +106,10 @@ func resourceCloudcaVpcCreate(d *schema.ResourceData, meta interface{}) error {
 	}
 	d.SetId(newVpc.Id)
 
-	return resourceCloudcaVpcRead(d, meta)
+	return resourceFrontierVpcRead(d, meta)
 }
 
-func resourceCloudcaVpcRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVpcRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -157,7 +157,7 @@ func resourceCloudcaVpcRead(d *schema.ResourceData, meta interface{}) error {
 	return nil
 }
 
-func resourceCloudcaVpcUpdate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVpcUpdate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -176,7 +176,7 @@ func resourceCloudcaVpcUpdate(d *schema.ResourceData, meta interface{}) error {
 	return nil
 }
 
-func resourceCloudcaVpcDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVpcDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

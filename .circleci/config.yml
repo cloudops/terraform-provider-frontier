@@ -1,7 +1,7 @@
 defaults: &defaults
   docker:
   - image: golang:1.11
-  working_directory: /go/src/github.com/cloud-ca/terraform-provider-cloudca
+  working_directory: /go/src/github.com/cloudops/terraform-provider-frontier
 
 version: 2
 jobs:
@@ -12,7 +12,7 @@ jobs:
     - save_cache:
         key: repo-{{ .Environment.CIRCLE_SHA1 }}
         paths:
-        - /go/src/github.com/cloud-ca/terraform-provider-cloudca
+        - /go/src/github.com/cloudops/terraform-provider-frontier
 
   vendor:
     <<: *defaults

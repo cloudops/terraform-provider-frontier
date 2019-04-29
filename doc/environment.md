@@ -1,11 +1,11 @@
-# cloudca_environment
+# frontier_environment
 
-Manages a cloud.ca environment
+Manages a Frontier Cloud environment
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_environment" "my_environment" {
+resource "frontier_environment" "my_environment" {
     service_code      = "compute-qc"
     organization_code = "test"
     name              = "production"
@@ -20,7 +20,7 @@ resource "cloudca_environment" "my_environment" {
 The following arguments are supported:
 
 - [service_code](#service_code) - (Required) Service code
-- [organization_code](#organization_code) - (Required) Organization's entry point, i.e. \<entry_point\>.cloud.ca
+- [organization_code](#organization_code) - (Required) Organization's entry point, i.e. \<entry_point\>.frontier.cloudops.net
 - [name](#name) - (Required) Name of environment to be created. Must be lower case, contain alphanumeric characters, underscores or dashes
 - [description](#description) - (Required) Description for the environment
 - [admin_role](#admin_role) - (Optional) List of users that will be given the Environment Admin role
@@ -39,5 +39,5 @@ In addition to the arguments listed above, the following computed attributes are
 Environments can be imported using the environment id, e.g.
 
 ```bash
-terraform import cloudca_environment.my_environment caeca36a-ccc9-4dc0-a7d1-eb88cbd7d0c0
+terraform import frontier_environment.my_environment caeca36a-ccc9-4dc0-a7d1-eb88cbd7d0c0
 ```

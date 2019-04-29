@@ -1,4 +1,4 @@
-# cloudca_port_forwarding_rule
+# frontier_port_forwarding_rule
 
 Manages port forwarding rules. Modifying any field will result in destruction and recreation of the rule.
 
@@ -7,7 +7,7 @@ When adding a port forwarding rule to the default private IP of an instance, onl
 ## Example Usage
 
 ```hcl
-resource "cloudca_port_forwarding_rule" "web_pfr" {
+resource "frontier_port_forwarding_rule" "web_pfr" {
     environment_id     = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     public_ip_id       = "319f508f-089b-482d-af17-0f3360520c69"
     public_port_start  = 80
@@ -44,5 +44,5 @@ In addition to the arguments listed above, the following computed attributes are
 Port forwarding rules can be imported using the port forwarding rules id, e.g.
 
 ```bash
-terraform import cloudca_port_forwarding_rule.web_pfr 816bd39d-5379-45be-b7a1-6b2ea18cec62
+terraform import frontier_port_forwarding_rule.web_pfr 816bd39d-5379-45be-b7a1-6b2ea18cec62
 ```

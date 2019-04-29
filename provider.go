@@ -4,7 +4,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/cloud-ca/terraform-provider-cloudca/cloudca"
+	"github.com/cloudops/terraform-provider-frontier/frontier"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )
@@ -16,23 +16,23 @@ func Provider() terraform.ResourceProvider {
 			"api_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("CLOUDCA_API_URL", "https://api.cloud.ca/v1"),
+				DefaultFunc: schema.EnvDefaultFunc("FRONTIER_API_URL", "https://api.frontier.cloudops.net/v1"),
 			},
 			"api_key": {
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("CLOUDCA_API_KEY", nil),
+				DefaultFunc: schema.EnvDefaultFunc("FRONTIER_API_KEY", nil),
 			},
 		},
 		ResourcesMap: mergeResourceMaps(
-			cloudca.GetCloudCAResourceMap(),
+			frontier.GetFrontierResourceMap(),
 		),
 		ConfigureFunc: providerConfigure,
 	}
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	insecure, _ := strconv.ParseBool(os.Getenv("CLOUD_CA_INSECURE_CONNECTION"))
+	insecure, _ := strconv.ParseBool(os.Getenv("FRONTIER_INSECURE_CONNECTION"))
 	config := Config{
 		APIURL:   d.Get("api_url").(string),
 		APIKey:   d.Get("api_key").(string),

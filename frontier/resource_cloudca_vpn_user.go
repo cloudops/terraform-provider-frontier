@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaVpnUser() *schema.Resource {
+func resourceFrontierVpnUser() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceCloudcaVpnUserCreate,
 		Read:   resourceCloudcaVpnUserRead,

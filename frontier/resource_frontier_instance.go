@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -10,12 +10,12 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaInstance() *schema.Resource {
+func resourceFrontierInstance() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaInstanceCreate,
-		Read:   resourceCloudcaInstanceRead,
-		Update: resourceCloudcaInstanceUpdate,
-		Delete: resourceCloudcaInstanceDelete,
+		Create: resourceFrontierInstanceCreate,
+		Read:   resourceFrontierInstanceRead,
+		Update: resourceFrontierInstanceUpdate,
+		Delete: resourceFrontierInstanceDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -110,7 +110,7 @@ func resourceCloudcaInstance() *schema.Resource {
 	}
 }
 
-func resourceCloudcaInstanceCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierInstanceCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -185,10 +185,10 @@ func resourceCloudcaInstanceCreate(d *schema.ResourceData, meta interface{}) err
 		"password": newInstance.Password,
 	})
 
-	return resourceCloudcaInstanceRead(d, meta)
+	return resourceFrontierInstanceRead(d, meta)
 }
 
-func resourceCloudcaInstanceRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierInstanceRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -236,7 +236,7 @@ func resourceCloudcaInstanceRead(d *schema.ResourceData, meta interface{}) error
 	return nil
 }
 
-func resourceCloudcaInstanceUpdate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierInstanceUpdate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -298,7 +298,7 @@ func resourceCloudcaInstanceUpdate(d *schema.ResourceData, meta interface{}) err
 	return nil
 }
 
-func resourceCloudcaInstanceDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierInstanceDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

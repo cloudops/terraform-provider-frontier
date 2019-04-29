@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -27,12 +27,12 @@ const (
 	ReadOnlyRoleUsers = "read_only_role"
 )
 
-func resourceCloudcaEnvironment() *schema.Resource {
+func resourceFrontierEnvironment() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaEnvironmentCreate,
-		Read:   resourceCloudcaEnvironmentRead,
-		Update: resourceCloudcaEnvironmentUpdate,
-		Delete: resourceCloudcaEnvironmentDelete,
+		Create: resourceFrontierEnvironmentCreate,
+		Read:   resourceFrontierEnvironmentRead,
+		Update: resourceFrontierEnvironmentUpdate,
+		Delete: resourceFrontierEnvironmentDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -43,7 +43,7 @@ func resourceCloudcaEnvironment() *schema.Resource {
 				Type:        schema.TypeString,
 				ForceNew:    true,
 				Required:    true,
-				Description: "Organization's entry point, i.e. <entry_point>.cloud.ca",
+				Description: "Organization's entry point, i.e. <entry_point>.frontier.cloudops.net",
 				StateFunc: func(val interface{}) string {
 					return strings.ToLower(val.(string))
 				},
@@ -52,7 +52,7 @@ func resourceCloudcaEnvironment() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "A cloudca service code",
+				Description: "A Frontier Cloud service code",
 			},
 			Name: {
 				Type:        schema.TypeString,
@@ -86,7 +86,7 @@ func resourceCloudcaEnvironment() *schema.Resource {
 	}
 }
 
-func resourceCloudcaEnvironmentRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierEnvironmentRead(d *schema.ResourceData, meta interface{}) error {
 	ccaClient := meta.(*cca.CcaClient)
 	environment, err := ccaClient.Environments.Get(d.Id())
 	if err != nil {
@@ -121,7 +121,7 @@ func resourceCloudcaEnvironmentRead(d *schema.ResourceData, meta interface{}) er
 	return nil
 }
 
-func resourceCloudcaEnvironmentCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierEnvironmentCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaClient := meta.(*cca.CcaClient)
 
 	environment, err := getEnvironmentFromConfig(ccaClient, d)
@@ -136,10 +136,10 @@ func resourceCloudcaEnvironmentCreate(d *schema.ResourceData, meta interface{}) 
 
 	d.SetId(newEnvironment.Id)
 
-	return resourceCloudcaEnvironmentRead(d, meta)
+	return resourceFrontierEnvironmentRead(d, meta)
 }
 
-func resourceCloudcaEnvironmentUpdate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierEnvironmentUpdate(d *schema.ResourceData, meta interface{}) error {
 	ccaClient := meta.(*cca.CcaClient)
 	environment, err := getEnvironmentFromConfig(ccaClient, d)
 	if err != nil {
@@ -149,10 +149,10 @@ func resourceCloudcaEnvironmentUpdate(d *schema.ResourceData, meta interface{}) 
 	if uerr != nil {
 		return fmt.Errorf("Error updating environment %s: %s", environment.Name, uerr)
 	}
-	return resourceCloudcaEnvironmentRead(d, meta)
+	return resourceFrontierEnvironmentRead(d, meta)
 }
 
-func resourceCloudcaEnvironmentDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierEnvironmentDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaClient := meta.(*cca.CcaClient)
 	fmt.Printf("[INFO] Destroying environment: %s\n", d.Get(Name).(string))
 	if _, err := ccaClient.Environments.Delete(d.Id()); err != nil {

@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -10,12 +10,12 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaVolume() *schema.Resource {
+func resourceFrontierVolume() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaVolumeCreate,
-		Read:   resourceCloudcaVolumeRead,
-		Update: resourceCloudcaVolumeUpdate,
-		Delete: resourceCloudcaVolumeDelete,
+		Create: resourceFrontierVolumeCreate,
+		Read:   resourceFrontierVolumeRead,
+		Update: resourceFrontierVolumeUpdate,
+		Delete: resourceFrontierVolumeDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -64,7 +64,7 @@ func resourceCloudcaVolume() *schema.Resource {
 	}
 }
 
-func resourceCloudcaVolumeCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVolumeCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -113,10 +113,10 @@ func resourceCloudcaVolumeCreate(d *schema.ResourceData, meta interface{}) error
 		return err
 	}
 	d.SetId(newVolume.Id)
-	return resourceCloudcaVolumeRead(d, meta)
+	return resourceFrontierVolumeRead(d, meta)
 }
 
-func resourceCloudcaVolumeRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVolumeRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -150,7 +150,7 @@ func resourceCloudcaVolumeRead(d *schema.ResourceData, meta interface{}) error {
 	return nil
 }
 
-func resourceCloudcaVolumeUpdate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVolumeUpdate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -198,10 +198,10 @@ func resourceCloudcaVolumeUpdate(d *schema.ResourceData, meta interface{}) error
 		d.SetPartial("iops")
 	}
 	d.Partial(false)
-	return resourceCloudcaVolumeRead(d, meta)
+	return resourceFrontierVolumeRead(d, meta)
 }
 
-func resourceCloudcaVolumeDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierVolumeDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

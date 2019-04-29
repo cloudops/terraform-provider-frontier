@@ -1,11 +1,11 @@
-# cloudca_static_nat
+# frontier_static_nat
 
 Configures static NAT between a public and a private IP of an instance. Enabling static NAT is equivalent to forwarding every public port to every private port.
 
 ## Example Usage
 
 ```hcl
-resource "cloudca_static_nat" "dev_static_nat" {
+resource "frontier_static_nat" "dev_static_nat" {
     environment_id = "4cad744d-bf1f-423d-887b-bbb34f4d1b5b"
     public_ip_id   = "10d523c1-907a-4f85-9181-9d62b16851c9"
     private_ip_id  = "c0d9824b-cb83-45ca-baca-e7e6c63a96a8"
@@ -29,5 +29,5 @@ Only the arguments listed above are returned.
 Static NATs can be imported using the static NAT id, e.g.
 
 ```bash
-terraform import cloudca_static_nat.dev_static_nat e604761e-765e-4593-96a5-8c99e8d55bae
+terraform import frontier_static_nat.dev_static_nat e604761e-765e-4593-96a5-8c99e8d55bae
 ```

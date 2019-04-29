@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -11,12 +11,12 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaNetwork() *schema.Resource {
+func resourceFrontierNetwork() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaNetworkCreate,
-		Read:   resourceCloudcaNetworkRead,
-		Update: resourceCloudcaNetworkUpdate,
-		Delete: resourceCloudcaNetworkDelete,
+		Create: resourceFrontierNetworkCreate,
+		Read:   resourceFrontierNetworkRead,
+		Update: resourceFrontierNetworkUpdate,
+		Delete: resourceFrontierNetworkDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -70,7 +70,7 @@ func resourceCloudcaNetwork() *schema.Resource {
 	}
 }
 
-func resourceCloudcaNetworkCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -102,10 +102,10 @@ func resourceCloudcaNetworkCreate(d *schema.ResourceData, meta interface{}) erro
 		return fmt.Errorf("Error creating the new network %s: %s", networkToCreate.Name, err)
 	}
 	d.SetId(newNetwork.Id)
-	return resourceCloudcaNetworkRead(d, meta)
+	return resourceFrontierNetworkRead(d, meta)
 }
 
-func resourceCloudcaNetworkRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -156,7 +156,7 @@ func resourceCloudcaNetworkRead(d *schema.ResourceData, meta interface{}) error 
 	return nil
 }
 
-func resourceCloudcaNetworkUpdate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkUpdate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -189,7 +189,7 @@ func resourceCloudcaNetworkUpdate(d *schema.ResourceData, meta interface{}) erro
 	return nil
 }
 
-func resourceCloudcaNetworkDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierNetworkDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

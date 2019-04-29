@@ -1,4 +1,4 @@
-package cloudca
+package frontier
 
 import (
 	"fmt"
@@ -8,11 +8,11 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func resourceCloudcaPublicIP() *schema.Resource {
+func resourceFrontierPublicIP() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudcaPublicIPCreate,
-		Read:   resourceCloudcaPublicIPRead,
-		Delete: resourceCloudcaPublicIPDelete,
+		Create: resourceFrontierPublicIPCreate,
+		Read:   resourceFrontierPublicIPRead,
+		Delete: resourceFrontierPublicIPDelete,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -39,7 +39,7 @@ func resourceCloudcaPublicIP() *schema.Resource {
 	}
 }
 
-func resourceCloudcaPublicIPCreate(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierPublicIPCreate(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -55,10 +55,10 @@ func resourceCloudcaPublicIPCreate(d *schema.ResourceData, meta interface{}) err
 		return fmt.Errorf("Error acquiring the new public IP %s", err)
 	}
 	d.SetId(newPublicIP.Id)
-	return resourceCloudcaPublicIPRead(d, meta)
+	return resourceFrontierPublicIPRead(d, meta)
 }
 
-func resourceCloudcaPublicIPRead(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierPublicIPRead(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {
@@ -82,7 +82,7 @@ func resourceCloudcaPublicIPRead(d *schema.ResourceData, meta interface{}) error
 	return nil
 }
 
-func resourceCloudcaPublicIPDelete(d *schema.ResourceData, meta interface{}) error {
+func resourceFrontierPublicIPDelete(d *schema.ResourceData, meta interface{}) error {
 	ccaResources, rerr := getResourcesForEnvironmentID(meta.(*cca.CcaClient), d.Get("environment_id").(string))
 
 	if rerr != nil {

@@ -1,8 +1,8 @@
 # Project variables
-NAME        := terraform-provider-cloudca
-DESCRIPTION := Terraform provider to interact with cloud.ca infrastructure
-VENDOR      := cloud.ca
-URL         := https://github.com/cloud-ca/terraform-provider-cloudca
+NAME        := terraform-provider-frontier
+DESCRIPTION := Terraform provider to interact with Frontier Cloud infrastructure
+VENDOR      := Frontier
+URL         := https://github.com/cloudops/terraform-provider-frontier
 LICENSE     := MIT
 
 # Build variables

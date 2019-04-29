@@ -1,4 +1,4 @@
-module github.com/cloud-ca/terraform-provider-cloudca
+module github.com/cloudops/terraform-provider-frontier
 
 require (
 	github.com/apparentlymart/go-cidr v1.0.0 // indirect
